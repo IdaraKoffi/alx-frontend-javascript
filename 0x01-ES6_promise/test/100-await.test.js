@@ -1,4 +1,5 @@
 import asyncUploadUser from '../100-await';
+const { uploadPhoto } = require('../utils');
 
 test('asyncUploadUser returns the correct object on success', async () => {
     const result = await asyncUploadUser();
@@ -9,13 +10,13 @@ test('asyncUploadUser returns the correct object on success', async () => {
 });
 
 test('asyncUploadUser returns an empty object on failure', async () => {
-    const originalUploadPhoto = require('./utils').uploadPhoto;
-    require('./utils').uploadPhoto = jest.fn(() => Promise.reject());
+    const originalUploadPhoto = uploadPhoto;
+    require('../utils').uploadPhoto = jest.fn(() => Promise.reject());
     const result = await asyncUploadUser();
     expect(result).toEqual({
         photo: null,
         user: null
     });
-    require('./utils').uploadPhoto = originalUploadPhoto;
+    require('../utils').uploadPhoto = originalUploadPhoto;
 });
 

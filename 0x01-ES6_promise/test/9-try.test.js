@@ -1,5 +1,5 @@
 import guardrail from '../9-try';
-import divideFunction from './8-try';
+import divideFunction from '../8-try';
 
 test('guardrail appends the correct value on successful function', () => {
     const result = guardrail(() => divideFunction(10, 2));

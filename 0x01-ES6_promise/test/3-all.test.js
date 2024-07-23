@@ -1,4 +1,5 @@
 import handleProfileSignup from '../3-all';
+const { uploadPhoto } = require('../utils');
 
 test('handleProfileSignup logs the correct output on success', async () => {
     console.log = jest.fn();
